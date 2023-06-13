@@ -6,6 +6,9 @@ import OfferComponent from "./OfferComponent";
 const Offers: FC = () => {
   const [offers, setOffers] = useState<Offer[] | null>(null);
 
+  console.log(process.env.BASE_URL);
+  console.log(process.env.BASE_URL ?? `http://localhost:8080`);
+
   // Send the GET request with the headers
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -14,15 +17,15 @@ const Offers: FC = () => {
       Authorization: `Bearer ${token}`,
     };
     axios
-      .get(`${process.env.BASE_URL}/transactions`, { headers })
+      .get(`${process.env.BASE_URL ?? `http://localhost:8080`}/transactions`, {
+        headers,
+      })
       .then((response) => {
         setOffers(response.data.data as Offer[]);
       })
       .catch((error) => {
         console.error(error);
       });
-
-    console.log(process.env.BASE_URL);
   }, []);
 
   return (
