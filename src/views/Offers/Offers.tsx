@@ -14,7 +14,7 @@ const Offers: FC = () => {
       Authorization: `Bearer ${token}`,
     };
     axios
-      .get("http://localhost:8081/offers", { headers })
+      .get(`${process.env.BASE_URL}/transactions`, { headers })
       .then((response) => {
         setOffers(response.data.data as Offer[]);
       })
