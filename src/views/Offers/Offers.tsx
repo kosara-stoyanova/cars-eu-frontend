@@ -7,6 +7,8 @@ const Offers: FC = () => {
   const [offers, setOffers] = useState<Offer[] | null>(null);
 
   console.log(process.env.BASE_URL);
+  console.log(process.env.TEST);
+
   console.log(process.env.BASE_URL ?? `http://localhost:8080`);
 
   // Send the GET request with the headers
