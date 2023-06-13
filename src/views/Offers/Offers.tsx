@@ -21,6 +21,8 @@ const Offers: FC = () => {
       .catch((error) => {
         console.error(error);
       });
+
+    console.log(process.env.BASE_URL);
   }, []);
 
   return (
