@@ -6,10 +6,7 @@ import OfferComponent from "./OfferComponent";
 const Offers: FC = () => {
   const [offers, setOffers] = useState<Offer[] | null>(null);
 
-  console.log(process.env.BASE_URL);
-  console.log(process.env.TEST);
-
-  console.log(process.env.BASE_URL ?? `http://localhost:8080`);
+  const base_url = process.env.REACT_APP_BASE_URL ?? `http://localhost:8080`;
 
   // Send the GET request with the headers
   useEffect(() => {
@@ -19,7 +16,7 @@ const Offers: FC = () => {
       Authorization: `Bearer ${token}`,
     };
     axios
-      .get(`${process.env.BASE_URL ?? `http://localhost:8080`}/transactions`, {
+      .get(`${base_url}/offers`, {
         headers,
       })
       .then((response) => {
